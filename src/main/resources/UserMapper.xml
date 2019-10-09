@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+    <insert id="insert">
+      insert into users(name,age) values(#{name},#{age})
+    </insert>
+    <update id="update">
+    	update users set name = #{name} , age = #{age} where id = #{id}
+    </update>
+
+    <!-- selectOne -->
+    <select id="selectOne" parameterType="int" resultType="com.jyj.mybatisdemo.domain.User">
+    	select * from users where id = #{id}
+    </select>
+
+    <!-- selectAll -->
+    <select id="selectAll" resultType="com.jyj.mybatisdemo.domain.User">
+    	select * from users
+    </select>
+</mapper>
