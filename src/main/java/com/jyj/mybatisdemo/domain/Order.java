@@ -1,10 +1,21 @@
 package com.jyj.mybatisdemo.domain;
 
+import java.util.List;
+
 public class Order {
 
     private Integer id;
     private String orderNo;
     private User user;
+    List<Item> items;
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 
     public Integer getId() {
         return id;

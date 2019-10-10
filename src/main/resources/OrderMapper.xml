@@ -7,15 +7,22 @@
       insert into orders(orderno,uid) values(#{orderNo},#{user.id})
     </insert>
 
+    <update id="update">
+        update orders set orderno = #{orderNo} , uid = #{user.id} where id = #{id}
+    </update>
+
     <select id="selectOne" parameterType="int" resultMap="RM_Order">
       select
         o.id oid,
         o.orderNo oorderNo,
         o.uid uid,
         u.name uname,
-        u.age age
+        u.age uage,
+        i.id iid,
+        i.itemname iitemname
       from orders o
         left outer join users u on o.uid = u.id
+        left outer join items i on o.id = i.oid
       where o.id = #{id}
     </select>
 
@@ -25,7 +32,7 @@
         o.orderNo oorderNo,
         o.uid uid,
         u.name uname,
-        u.age age
+        u.age uage
       from orders o
         left outer join users u on o.uid = u.id
     </select>
@@ -38,5 +45,9 @@
             <result property="name" column="uname" />
             <result property="age" column="uage" />
         </association>
+        <collection property="items" ofType="com.jyj.mybatisdemo.domain.Item">
+            <id property="id" column="iid" />
+            <result property="itemName" column="iitemname" />
+        </collection>
     </resultMap>
 </mapper>
