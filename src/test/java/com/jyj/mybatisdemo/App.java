@@ -17,15 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class App {
-    public static void main(String[] args) throws IOException {
-        UserDao dao = new UserDao();
-        User user = new User();
-        user.setName("kk");
-        user.setAge(12);
-        dao.insert(user);
-        System.out.println(dao.selectOne(1).getName());
-    }
-
     public static SqlSession getSqlSession() throws Exception {
         //指定配置文件的路径(类路径)
         String resource = "mybatis-config.xml";
