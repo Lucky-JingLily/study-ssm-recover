@@ -1,19 +1,15 @@
-package com.jyj.mybatisdemo;
+package mybatisdemo;
 
-import com.jyj.mybatisdemo.dao.UserDao;
 import com.jyj.mybatisdemo.domain.Item;
 import com.jyj.mybatisdemo.domain.Order;
 import com.jyj.mybatisdemo.domain.User;
-import com.sun.tools.corba.se.idl.constExpr.Or;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 public class App {
