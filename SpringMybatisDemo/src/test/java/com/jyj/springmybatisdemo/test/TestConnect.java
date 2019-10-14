@@ -1,6 +1,9 @@
 package com.jyj.springmybatisdemo.test;
 
+import com.jyj.springmybatisdemo.domain.Item;
+import com.jyj.springmybatisdemo.domain.Order;
 import com.jyj.springmybatisdemo.domain.User;
+import com.jyj.springmybatisdemo.service.ItemService;
 import com.jyj.springmybatisdemo.service.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -46,5 +49,33 @@ public class TestConnect {
         System.out.println(user.getId());
         System.out.println(user.getName());
         System.out.println(user.getAge());
+    }
+
+    @Test
+    public void insertItem() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+        ItemService itemService = (ItemService) applicationContext.getBean("itemService");
+
+        Item item = new Item();
+        item.setItemName("ii00001");
+        Order order = new Order();
+        order.setOrderNo("oo00001");
+        order.setId(2);
+        item.setOrder(order);
+
+        itemService.insert(item);
+    }
+
+    @Test
+    public void selectOneItem() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+        ItemService itemService = (ItemService) applicationContext.getBean("itemService");
+
+        Item item = itemService.selectOne(2);
+
+        System.out.println(item.getId());
+        System.out.println(item.getItemName());
+        System.out.println(item.getOrder().getOrderNo());
+        System.out.println(item.getOrder().getUser().getName());
     }
 }
