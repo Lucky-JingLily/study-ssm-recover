@@ -28,10 +28,12 @@ public class App {
     @Test
     public void insert() throws Exception {
         SqlSession sqlSession = getSqlSession();
-        User user = new User();
-        user.setAge(1);
-        user.setName("Tom");
-        sqlSession.insert("users.insert", user);
+        for (int i = 0; i < 10; i++) {
+            User user = new User();
+            user.setAge(i + 1);
+            user.setName("李" + i);
+            sqlSession.insert("users.insert", user);
+        }
         sqlSession.commit();
         sqlSession.close();
     }
